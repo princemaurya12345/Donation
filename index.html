@@ -1,0 +1,1424 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HopeRise - Make a Difference Today</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        inter: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        primary: {
+                            50: '#fdf2f8',
+                            100: '#fce7f3',
+                            200: '#fbcfe8',
+                            300: '#f9a8d4',
+                            400: '#f472b6',
+                            500: '#ec4899',
+                            600: '#db2777',
+                            700: '#be185d',
+                            800: '#9d174d',
+                            900: '#831843',
+                        },
+                        accent: {
+                            400: '#fb923c',
+                            500: '#f97316',
+                            600: '#ea580c',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        * {
+            font-family: 'Inter', sans-serif;
+        }
+
+        .gradient-bg {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+
+        .gradient-text {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-gradient {
+            background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 50%, #312e81 100%);
+        }
+
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+
+        .pulse-animation {
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        .float-animation {
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .progress-bar-fill {
+            transition: width 2s ease-in-out;
+        }
+
+        .fade-in {
+            animation: fadeIn 0.5s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .slide-up {
+            animation: slideUp 0.6s ease-out;
+        }
+
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(40px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .donor-avatar {
+            transition: transform 0.3s ease;
+        }
+
+        .donor-avatar:hover {
+            transform: scale(1.1);
+        }
+
+        .amount-btn {
+            transition: all 0.2s ease;
+        }
+
+        .amount-btn:hover {
+            transform: scale(1.05);
+        }
+
+        .amount-btn.selected {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-color: transparent;
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
+        }
+
+        .modal-overlay {
+            backdrop-filter: blur(8px);
+        }
+
+        .shimmer {
+            background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+            background-size: 200% 100%;
+            animation: shimmer 2s infinite;
+        }
+
+        @keyframes shimmer {
+            0% { background-position: 200% 0; }
+            100% { background-position: -200% 0; }
+        }
+
+        .confetti {
+            position: fixed;
+            width: 10px;
+            height: 10px;
+            pointer-events: none;
+            animation: confetti-fall 3s ease-in forwards;
+        }
+
+        @keyframes confetti-fall {
+            0% { transform: translateY(-100vh) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(100vh) rotate(720deg); opacity: 0; }
+        }
+
+        .glass-effect {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .heart-beat {
+            animation: heartBeat 1.5s ease-in-out infinite;
+        }
+
+        @keyframes heartBeat {
+            0%, 100% { transform: scale(1); }
+            14% { transform: scale(1.3); }
+            28% { transform: scale(1); }
+            42% { transform: scale(1.3); }
+            70% { transform: scale(1); }
+        }
+
+        .timeline-line {
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(to bottom, #667eea, #764ba2);
+        }
+
+        @media (max-width: 768px) {
+            .timeline-line {
+                left: 20px;
+            }
+        }
+
+        .particle {
+            position: absolute;
+            border-radius: 50%;
+            pointer-events: none;
+            animation: particleFloat 8s ease-in-out infinite;
+        }
+
+        @keyframes particleFloat {
+            0%, 100% { transform: translate(0, 0) rotate(0deg); opacity: 0.5; }
+            25% { transform: translate(50px, -50px) rotate(90deg); opacity: 0.8; }
+            50% { transform: translate(-30px, -100px) rotate(180deg); opacity: 0.5; }
+            75% { transform: translate(40px, -30px) rotate(270deg); opacity: 0.8; }
+        }
+
+        .scroll-indicator {
+            animation: scrollBounce 2s ease-in-out infinite;
+        }
+
+        @keyframes scrollBounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(10px); }
+        }
+
+        .stripe-btn {
+            background: linear-gradient(135deg, #635bff 0%, #7a73ff 100%);
+            transition: all 0.3s ease;
+        }
+
+        .stripe-btn:hover {
+            background: linear-gradient(135deg, #5046e5 0%, #6a63ff 100%);
+            box-shadow: 0 10px 30px rgba(99, 91, 255, 0.4);
+        }
+
+        .paypal-btn {
+            background: linear-gradient(135deg, #003087 0%, #009cde 100%);
+            transition: all 0.3s ease;
+        }
+
+        .paypal-btn:hover {
+            background: linear-gradient(135deg, #002569 0%, #0088c7 100%);
+            box-shadow: 0 10px 30px rgba(0, 48, 135, 0.4);
+        }
+    </style>
+</head>
+<body class="bg-gray-50 font-inter">
+    <!-- Navigation -->
+    <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16 md:h-20">
+                <div class="flex items-center space-x-2">
+                    <div class="w-10 h-10 rounded-xl gradient-bg flex items-center justify-center">
+                        <i class="fas fa-heart text-white text-lg"></i>
+                    </div>
+                    <span class="text-xl font-bold text-white">HopeRise</span>
+                </div>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#campaign" class="text-white/80 hover:text-white transition-colors">Campaign</a>
+                    <a href="#donate" class="text-white/80 hover:text-white transition-colors">Donate</a>
+                    <a href="#updates" class="text-white/80 hover:text-white transition-colors">Updates</a>
+                    <a href="#donors" class="text-white/80 hover:text-white transition-colors">Donors</a>
+                    <a href="#faq" class="text-white/80 hover:text-white transition-colors">FAQ</a>
+                    <button onclick="scrollToDonate()" class="px-6 py-2.5 rounded-full gradient-bg text-white font-semibold hover:opacity-90 transition-opacity shadow-lg">
+                        Donate Now
+                    </button>
+                </div>
+                <button onclick="toggleMobileMenu()" class="md:hidden text-white text-2xl">
+                    <i class="fas fa-bars" id="menuIcon"></i>
+                </button>
+            </div>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobileMenu" class="hidden md:hidden bg-white/10 backdrop-blur-lg border-t border-white/10">
+            <div class="px-4 py-4 space-y-3">
+                <a href="#campaign" class="block text-white py-2 hover:text-white/80 transition-colors">Campaign</a>
+                <a href="#donate" class="block text-white py-2 hover:text-white/80 transition-colors">Donate</a>
+                <a href="#updates" class="block text-white py-2 hover:text-white/80 transition-colors">Updates</a>
+                <a href="#donors" class="block text-white py-2 hover:text-white/80 transition-colors">Donors</a>
+                <a href="#faq" class="block text-white py-2 hover:text-white/80 transition-colors">FAQ</a>
+                <button onclick="scrollToDonate()" class="w-full px-6 py-3 rounded-full gradient-bg text-white font-semibold">
+                    Donate Now
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-gradient min-h-screen relative overflow-hidden flex items-center">
+        <!-- Animated Background Particles -->
+        <div class="absolute inset-0 overflow-hidden">
+            <div class="particle w-2 h-2 bg-purple-400/30 top-20 left-1/4" style="animation-delay: 0s;"></div>
+            <div class="particle w-3 h-3 bg-blue-400/30 top-40 right-1/3" style="animation-delay: 1s;"></div>
+            <div class="particle w-2 h-2 bg-pink-400/30 bottom-40 left-1/3" style="animation-delay: 2s;"></div>
+            <div class="particle w-4 h-4 bg-indigo-400/20 top-1/2 right-1/4" style="animation-delay: 3s;"></div>
+            <div class="particle w-2 h-2 bg-purple-300/30 bottom-20 right-1/2" style="animation-delay: 4s;"></div>
+            <div class="particle w-3 h-3 bg-blue-300/20 top-1/3 left-1/2" style="animation-delay: 5s;"></div>
+        </div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-32 relative z-10">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <div class="slide-up">
+                    <div class="inline-flex items-center px-4 py-2 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 text-white/90 text-sm mb-6">
+                        <span class="w-2 h-2 bg-green-400 rounded-full mr-2 pulse-animation"></span>
+                        Campaign Active • 23 Days Left
+                    </div>
+                    <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight mb-6">
+                        Help Build a
+                        <span class="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-400"> Brighter Future</span>
+                        for Children
+                    </h1>
+                    <p class="text-lg text-white/70 mb-8 max-w-lg">
+                        Join our mission to provide education, healthcare, and hope to underprivileged children worldwide. Every donation creates ripples of change.
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-4">
+                        <button onclick="scrollToDonate()" class="px-8 py-4 rounded-full gradient-bg text-white font-bold text-lg hover:opacity-90 transition-all shadow-xl hover:shadow-2xl pulse-animation">
+                            <i class="fas fa-heart mr-2"></i> Donate Now
+                        </button>
+                        <button onclick="document.getElementById('campaign').scrollIntoView({behavior: 'smooth'})" class="px-8 py-4 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 text-white font-semibold text-lg hover:bg-white/20 transition-all">
+                            <i class="fas fa-play mr-2"></i> Learn More
+                        </button>
+                    </div>
+                    <div class="flex items-center gap-6 mt-10">
+                        <div class="flex -space-x-3">
+                            <img src="https://i.pravatar.cc/40?img=1" class="w-10 h-10 rounded-full border-2 border-white/20" alt="Donor">
+                            <img src="https://i.pravatar.cc/40?img=2" class="w-10 h-10 rounded-full border-2 border-white/20" alt="Donor">
+                            <img src="https://i.pravatar.cc/40?img=3" class="w-10 h-10 rounded-full border-2 border-white/20" alt="Donor">
+                            <img src="https://i.pravatar.cc/40?img=4" class="w-10 h-10 rounded-full border-2 border-white/20" alt="Donor">
+                            <div class="w-10 h-10 rounded-full border-2 border-white/20 bg-purple-500 flex items-center justify-center text-white text-xs font-bold">+2k</div>
+                        </div>
+                        <div>
+                            <p class="text-white font-semibold">2,847 Supporters</p>
+                            <p class="text-white/60 text-sm">Have already donated</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="hidden lg:block float-animation">
+                    <div class="relative">
+                        <div class="absolute -inset-4 gradient-bg rounded-3xl opacity-20 blur-3xl"></div>
+                        <div class="relative bg-white/10 backdrop-blur-lg rounded-3xl p-8 border border-white/20">
+                            <img src="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?w=600&h=400&fit=crop" 
+                                 alt="Children learning" 
+                                 class="rounded-2xl w-full h-64 object-cover mb-6">
+                            <div class="grid grid-cols-3 gap-4">
+                                <div class="text-center p-4 bg-white/10 rounded-xl">
+                                    <p class="text-2xl font-bold text-white">15K+</p>
+                                    <p class="text-white/60 text-sm">Children Helped</p>
+                                </div>
+                                <div class="text-center p-4 bg-white/10 rounded-xl">
+                                    <p class="text-2xl font-bold text-white">42</p>
+                                    <p class="text-white/60 text-sm">Schools Built</p>
+                                </div>
+                                <div class="text-center p-4 bg-white/10 rounded-xl">
+                                    <p class="text-2xl font-bold text-white">18</p>
+                                    <p class="text-white/60 text-sm">Countries</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Scroll Indicator -->
+        <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 scroll-indicator">
+            <div class="w-6 h-10 rounded-full border-2 border-white/30 flex items-start justify-center p-2">
+                <div class="w-1.5 h-3 bg-white/60 rounded-full animate-bounce"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Campaign Section -->
+    <section id="campaign" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <span class="inline-block px-4 py-1.5 rounded-full bg-purple-100 text-purple-700 text-sm font-semibold mb-4">Our Mission</span>
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">The Campaign Story</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">Learn about our mission and how your contribution makes a real difference in children's lives.</p>
+            </div>
+
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <div>
+                    <img src="https://images.unsplash.com/photo-1497486751825-1233686d5d80?w=600&h=500&fit=crop" 
+                         alt="Campaign" 
+                         class="rounded-2xl shadow-2xl w-full">
+                </div>
+                <div>
+                    <h3 class="text-2xl font-bold text-gray-900 mb-6">Education Changes Everything</h3>
+                    <p class="text-gray-600 mb-6 leading-relaxed">
+                        In many parts of the world, children lack access to basic education. Our campaign aims to change that by building schools, providing supplies, and training teachers in underserved communities.
+                    </p>
+                    <div class="space-y-4">
+                        <div class="flex items-start gap-4 p-4 bg-gray-50 rounded-xl">
+                            <div class="w-10 h-10 rounded-lg gradient-bg flex items-center justify-center flex-shrink-0">
+                                <i class="fas fa-graduation-cap text-white"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-gray-900">Quality Education</h4>
+                                <p class="text-gray-600 text-sm">Building schools and providing learning materials for 5,000+ children</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-4 p-4 bg-gray-50 rounded-xl">
+                            <div class="w-10 h-10 rounded-lg gradient-bg flex items-center justify-center flex-shrink-0">
+                                <i class="fas fa-heartbeat text-white"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-gray-900">Healthcare Access</h4>
+                                <p class="text-gray-600 text-sm">Medical checkups and nutrition programs for every child enrolled</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-4 p-4 bg-gray-50 rounded-xl">
+                            <div class="w-10 h-10 rounded-lg gradient-bg flex items-center justify-center flex-shrink-0">
+                                <i class="fas fa-users text-white"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-gray-900">Community Impact</h4>
+                                <p class="text-gray-600 text-sm">Empowering families and creating sustainable change in communities</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Progress Section -->
+    <section class="py-16 bg-gradient-to-br from-purple-50 to-blue-50">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="bg-white rounded-3xl shadow-xl p-8 md:p-12">
+                <div class="text-center mb-8">
+                    <h3 class="text-2xl font-bold text-gray-900 mb-2">Campaign Progress</h3>
+                    <p class="text-gray-600">We're getting closer to our goal every day</p>
+                </div>
+                
+                <div class="mb-8">
+                    <div class="flex justify-between items-end mb-3">
+                        <div>
+                            <span class="text-4xl font-bold gradient-text" id="raisedAmount">$187,450</span>
+                            <span class="text-gray-500 ml-2">raised</span>
+                        </div>
+                        <div class="text-right">
+                            <span class="text-gray-500">Goal: </span>
+                            <span class="text-xl font-bold text-gray-900">$250,000</span>
+                        </div>
+                    </div>
+                    <div class="h-4 bg-gray-100 rounded-full overflow-hidden">
+                        <div id="progressBar" class="progress-bar-fill h-full rounded-full gradient-bg" style="width: 0%"></div>
+                    </div>
+                    <div class="flex justify-between mt-3">
+                        <span class="text-sm text-gray-500">75% funded</span>
+                        <span class="text-sm text-gray-500">23 days remaining</span>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                    <div class="text-center p-4 bg-purple-50 rounded-xl">
+                        <p class="text-2xl font-bold text-purple-700">2,847</p>
+                        <p class="text-sm text-gray-600">Donors</p>
+                    </div>
+                    <div class="text-center p-4 bg-blue-50 rounded-xl">
+                        <p class="text-2xl font-bold text-blue-700">$65</p>
+                        <p class="text-sm text-gray-600">Avg. Donation</p>
+                    </div>
+                    <div class="text-center p-4 bg-pink-50 rounded-xl">
+                        <p class="text-2xl font-bold text-pink-700">23</p>
+                        <p class="text-sm text-gray-600">Days Left</p>
+                    </div>
+                    <div class="text-center p-4 bg-orange-50 rounded-xl">
+                        <p class="text-2xl font-bold text-orange-700">142</p>
+                        <p class="text-sm text-gray-600">Shares</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Donation Section -->
+    <section id="donate" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <span class="inline-block px-4 py-1.5 rounded-full bg-purple-100 text-purple-700 text-sm font-semibold mb-4">
+                    <i class="fas fa-heart mr-1"></i> Make a Difference
+                </span>
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Choose Your Impact</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">Every contribution, no matter the size, brings us closer to our goal. Select an amount or enter a custom donation.</p>
+            </div>
+
+            <div class="grid lg:grid-cols-3 gap-8">
+                <!-- Donation Tiers -->
+                <div class="lg:col-span-2">
+                    <div class="grid sm:grid-cols-2 gap-4 mb-8">
+                        <div class="amount-btn cursor-pointer border-2 border-gray-200 rounded-2xl p-6 text-center hover:border-purple-400" onclick="selectAmount(25, this)" data-amount="25">
+                            <div class="text-3xl mb-2">📚</div>
+                            <p class="text-3xl font-bold text-gray-900 mb-1">$25</p>
+                            <p class="text-sm text-gray-600">Provides school supplies for one child for a year</p>
+                        </div>
+                        <div class="amount-btn cursor-pointer border-2 border-gray-200 rounded-2xl p-6 text-center hover:border-purple-400" onclick="selectAmount(50, this)" data-amount="50">
+                            <div class="text-3xl mb-2">🎒</div>
+                            <p class="text-3xl font-bold text-gray-900 mb-1">$50</p>
+                            <p class="text-sm text-gray-600">Funds a complete backpack with essentials</p>
+                        </div>
+                        <div class="amount-btn cursor-pointer border-2 border-gray-200 rounded-2xl p-6 text-center hover:border-purple-400" onclick="selectAmount(100, this)" data-amount="100">
+                            <div class="text-3xl mb-2">🏫</div>
+                            <p class="text-3xl font-bold text-gray-900 mb-1">$100</p>
+                            <p class="text-sm text-gray-600">Sponsors a child's education for one month</p>
+                        </div>
+                        <div class="amount-btn cursor-pointer border-2 border-purple-500 rounded-2xl p-6 text-center selected relative overflow-hidden" onclick="selectAmount(250, this)" data-amount="250">
+                            <div class="absolute top-2 right-2 px-2 py-1 bg-yellow-400 text-xs font-bold rounded-full">POPULAR</div>
+                            <div class="text-3xl mb-2">⭐</div>
+                            <p class="text-3xl font-bold mb-1">$250</p>
+                            <p class="text-sm opacity-90">Builds a desk and chair set for a classroom</p>
+                        </div>
+                    </div>
+
+                    <!-- Custom Amount -->
+                    <div class="bg-gray-50 rounded-2xl p-6 mb-8">
+                        <label class="block text-sm font-semibold text-gray-700 mb-3">Custom Amount</label>
+                        <div class="relative">
+                            <span class="absolute left-4 top-1/2 transform -translate-y-1/2 text-2xl font-bold text-gray-400">$</span>
+                            <input type="number" id="customAmount" placeholder="Enter amount" 
+                                   class="w-full pl-12 pr-4 py-4 text-2xl font-bold border-2 border-gray-200 rounded-xl focus:border-purple-500 focus:outline-none transition-colors"
+                                   oninput="updateCustomAmount(this.value)">
+                        </div>
+                    </div>
+
+                    <!-- Donor Information -->
+                    <div class="bg-gray-50 rounded-2xl p-6 mb-8">
+                        <h4 class="font-semibold text-gray-900 mb-4">Your Information (Optional)</h4>
+                        <div class="grid sm:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-sm text-gray-600 mb-1">First Name</label>
+                                <input type="text" id="firstName" placeholder="John" 
+                                       class="w-full px-4 py-3 border border-gray-200 rounded-xl focus:border-purple-500 focus:outline-none transition-colors">
+                            </div>
+                            <div>
+                                <label class="block text-sm text-gray-600 mb-1">Last Name</label>
+                                <input type="text" id="lastName" placeholder="Doe" 
+                                       class="w-full px-4 py-3 border border-gray-200 rounded-xl focus:border-purple-500 focus:outline-none transition-colors">
+                            </div>
+                            <div class="sm:col-span-2">
+                                <label class="block text-sm text-gray-600 mb-1">Email</label>
+                                <input type="email" id="email" placeholder="john@example.com" 
+                                       class="w-full px-4 py-3 border border-gray-200 rounded-xl focus:border-purple-500 focus:outline-none transition-colors">
+                            </div>
+                        </div>
+                        <label class="flex items-center gap-3 mt-4 cursor-pointer">
+                            <input type="checkbox" id="anonymous" class="w-5 h-5 rounded text-purple-600">
+                            <span class="text-sm text-gray-600">Make my donation anonymous</span>
+                        </label>
+                        <label class="flex items-center gap-3 mt-2 cursor-pointer">
+                            <input type="checkbox" id="newsletter" checked class="w-5 h-5 rounded text-purple-600">
+                            <span class="text-sm text-gray-600">Send me campaign updates</span>
+                        </label>
+                    </div>
+
+                    <!-- Payment Buttons -->
+                    <div class="space-y-4">
+                        <button onclick="processPayment('stripe')" class="stripe-btn w-full py-4 rounded-xl text-white font-bold text-lg flex items-center justify-center gap-3">
+                            <i class="fab fa-stripe text-2xl"></i>
+                            Pay with Stripe
+                        </button>
+                        <button onclick="processPayment('paypal')" class="paypal-btn w-full py-4 rounded-xl text-white font-bold text-lg flex items-center justify-center gap-3">
+                            <i class="fab fa-paypal text-2xl"></i>
+                            Pay with PayPal
+                        </button>
+                        <div class="flex items-center gap-4">
+                            <div class="flex-1 h-px bg-gray-200"></div>
+                            <span class="text-sm text-gray-500">or pay with</span>
+                            <div class="flex-1 h-px bg-gray-200"></div>
+                        </div>
+                        <div class="grid grid-cols-2 gap-4">
+                            <button onclick="processPayment('card')" class="py-3 rounded-xl border-2 border-gray-200 text-gray-700 font-semibold hover:border-purple-400 transition-colors flex items-center justify-center gap-2">
+                                <i class="fas fa-credit-card"></i> Card
+                            </button>
+                            <button onclick="processPayment('bank')" class="py-3 rounded-xl border-2 border-gray-200 text-gray-700 font-semibold hover:border-purple-400 transition-colors flex items-center justify-center gap-2">
+                                <i class="fas fa-university"></i> Bank Transfer
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="flex items-center justify-center gap-4 mt-6 text-sm text-gray-500">
+                        <i class="fas fa-lock"></i>
+                        <span>Secure 256-bit SSL encryption</span>
+                        <span>•</span>
+                        <span>Tax deductible</span>
+                    </div>
+                </div>
+
+                <!-- Sidebar -->
+                <div class="space-y-6">
+                    <!-- Impact Summary -->
+                    <div class="bg-gradient-to-br from-purple-600 to-indigo-700 rounded-2xl p-6 text-white">
+                        <h4 class="font-bold text-lg mb-4">Your Impact</h4>
+                        <div id="impactSummary" class="space-y-4">
+                            <div class="flex items-center gap-3 p-3 bg-white/10 rounded-xl">
+                                <span class="text-2xl">📚</span>
+                                <div>
+                                    <p class="font-semibold">School Supplies</p>
+                                    <p class="text-sm opacity-80">For 10 children</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center gap-3 p-3 bg-white/10 rounded-xl">
+                                <span class="text-2xl">🏫</span>
+                                <div>
+                                    <p class="font-semibold">Classroom Desk</p>
+                                    <p class="text-sm opacity-80">1 desk & chair set</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mt-4 pt-4 border-t border-white/20">
+                            <p class="text-sm opacity-80">Selected Amount</p>
+                            <p class="text-3xl font-bold" id="selectedAmountDisplay">$250</p>
+                        </div>
+                    </div>
+
+                    <!-- Recent Donors -->
+                    <div class="bg-white border border-gray-100 rounded-2xl p-6 shadow-sm">
+                        <h4 class="font-bold text-gray-900 mb-4">Recent Donors</h4>
+                        <div class="space-y-3">
+                            <div class="flex items-center gap-3">
+                                <img src="https://i.pravatar.cc/36?img=5" class="w-9 h-9 rounded-full" alt="">
+                                <div class="flex-1">
+                                    <p class="text-sm font-semibold text-gray-900">Sarah M.</p>
+                                    <p class="text-xs text-gray-500">2 minutes ago</p>
+                                </div>
+                                <span class="text-sm font-bold text-purple-600">$150</span>
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <img src="https://i.pravatar.cc/36?img=8" class="w-9 h-9 rounded-full" alt="">
+                                <div class="flex-1">
+                                    <p class="text-sm font-semibold text-gray-900">James K.</p>
+                                    <p class="text-xs text-gray-500">15 minutes ago</p>
+                                </div>
+                                <span class="text-sm font-bold text-purple-600">$75</span>
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <img src="https://i.pravatar.cc/36?img=9" class="w-9 h-9 rounded-full" alt="">
+                                <div class="flex-1">
+                                    <p class="text-sm font-semibold text-gray-900">Emily R.</p>
+                                    <p class="text-xs text-gray-500">1 hour ago</p>
+                                </div>
+                                <span class="text-sm font-bold text-purple-600">$500</span>
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <div class="w-9 h-9 rounded-full bg-gray-200 flex items-center justify-center">
+                                    <i class="fas fa-user text-gray-400 text-sm"></i>
+                                </div>
+                                <div class="flex-1">
+                                    <p class="text-sm font-semibold text-gray-900">Anonymous</p>
+                                    <p class="text-xs text-gray-500">2 hours ago</p>
+                                </div>
+                                <span class="text-sm font-bold text-purple-600">$1,000</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Share -->
+                    <div class="bg-white border border-gray-100 rounded-2xl p-6 shadow-sm">
+                        <h4 class="font-bold text-gray-900 mb-4">Share Campaign</h4>
+                        <div class="grid grid-cols-4 gap-3">
+                            <button class="w-full aspect-square rounded-xl bg-blue-600 text-white flex items-center justify-center hover:opacity-90 transition-opacity">
+                                <i class="fab fa-facebook-f text-lg"></i>
+                            </button>
+                            <button class="w-full aspect-square rounded-xl bg-sky-500 text-white flex items-center justify-center hover:opacity-90 transition-opacity">
+                                <i class="fab fa-twitter text-lg"></i>
+                            </button>
+                            <button class="w-full aspect-square rounded-xl bg-green-600 text-white flex items-center justify-center hover:opacity-90 transition-opacity">
+                                <i class="fab fa-whatsapp text-lg"></i>
+                            </button>
+                            <button class="w-full aspect-square rounded-xl bg-gray-800 text-white flex items-center justify-center hover:opacity-90 transition-opacity" onclick="copyLink()">
+                                <i class="fas fa-link text-lg"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Updates Section -->
+    <section id="updates" class="py-20 bg-gray-50">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <span class="inline-block px-4 py-1.5 rounded-full bg-purple-100 text-purple-700 text-sm font-semibold mb-4">
+                    <i class="fas fa-bell mr-1"></i> Latest Updates
+                </span>
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Campaign Updates</h2>
+                <p class="text-gray-600">Stay informed about our progress and milestones</p>
+            </div>
+
+            <div class="space-y-8">
+                <div class="bg-white rounded-2xl shadow-sm p-6 md:p-8 card-hover">
+                    <div class="flex items-start gap-4">
+                        <div class="w-12 h-12 rounded-xl gradient-bg flex items-center justify-center flex-shrink-0">
+                            <i class="fas fa-trophy text-white"></i>
+                        </div>
+                        <div class="flex-1">
+                            <div class="flex items-center gap-3 mb-2">
+                                <h4 class="font-bold text-gray-900">Milestone Reached: 75% Funded!</h4>
+                                <span class="px-2 py-0.5 bg-green-100 text-green-700 text-xs font-semibold rounded-full">New</span>
+                            </div>
+                            <p class="text-sm text-gray-500 mb-3">December 15, 2024</p>
+                            <p class="text-gray-600">We're thrilled to announce that we've reached 75% of our funding goal! Thanks to the incredible generosity of our donors, we're on track to break ground on the first school in January. The community is buzzing with excitement!</p>
+                            <img src="https://images.unsplash.com/photo-1497633762265-9d179a990aa6?w=600&h=300&fit=crop" 
+                                 alt="Update" class="rounded-xl mt-4 w-full h-48 object-cover">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-2xl shadow-sm p-6 md:p-8 card-hover">
+                    <div class="flex items-start gap-4">
+                        <div class="w-12 h-12 rounded-xl bg-blue-500 flex items-center justify-center flex-shrink-0">
+                            <i class="fas fa-map-marker-alt text-white"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-gray-900 mb-2">Site Selected for First School</h4>
+                            <p class="text-sm text-gray-500 mb-3">December 8, 2024</p>
+                            <p class="text-gray-600">After careful evaluation, we've selected the site for our first school in the Mwanza region of Tanzania. The location was chosen for its accessibility and proximity to the communities that need it most.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-2xl shadow-sm p-6 md:p-8 card-hover">
+                    <div class="flex items-start gap-4">
+                        <div class="w-12 h-12 rounded-xl bg-orange-500 flex items-center justify-center flex-shrink-0">
+                            <i class="fas fa-handshake text-white"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-gray-900 mb-2">Partnership with Local NGO</h4>
+                            <p class="text-sm text-gray-500 mb-3">November 28, 2024</p>
+                            <p class="text-gray-600">We've partnered with Education for All Tanzania (EFAT) to ensure sustainable operations and local expertise. This partnership will help us maximize the impact of every dollar donated.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-2xl shadow-sm p-6 md:p-8 card-hover">
+                    <div class="flex items-start gap-4">
+                        <div class="w-12 h-12 rounded-xl bg-green-500 flex items-center justify-center flex-shrink-0">
+                            <i class="fas fa-rocket text-white"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-gray-900 mb-2">Campaign Launch!</h4>
+                            <p class="text-sm text-gray-500 mb-3">November 1, 2024</p>
+                            <p class="text-gray-600">Today marks the beginning of our journey to build schools and change lives. We're launching with a goal of $250,000 to build 3 schools and provide education to over 5,000 children. Join us in making this dream a reality!</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Donors Wall -->
+    <section id="donors" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <span class="inline-block px-4 py-1.5 rounded-full bg-purple-100 text-purple-700 text-sm font-semibold mb-4">
+                    <i class="fas fa-users mr-1"></i> Our Heroes
+                </span>
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Wall of Generosity</h2>
+                <p class="text-gray-600">Thank you to all our amazing donors</p>
+            </div>
+
+            <!-- Top Donors -->
+            <div class="grid md:grid-cols-3 gap-6 mb-12">
+                <div class="bg-gradient-to-br from-yellow-50 to-orange-50 rounded-2xl p-6 text-center card-hover border border-yellow-200">
+                    <div class="text-4xl mb-3">🥇</div>
+                    <img src="https://i.pravatar.cc/80?img=11" class="w-20 h-20 rounded-full mx-auto mb-3 border-4 border-yellow-400" alt="">
+                    <h4 class="font-bold text-gray-900">Michael Chen</h4>
+                    <p class="text-3xl font-bold text-orange-600 my-2">$15,000</p>
+                    <p class="text-sm text-gray-600">"Education is the most powerful weapon which you can use to change the world."</p>
+                </div>
+                <div class="bg-gradient-to-br from-gray-50 to-slate-50 rounded-2xl p-6 text-center card-hover border border-gray-200">
+                    <div class="text-4xl mb-3">🥈</div>
+                    <img src="https://i.pravatar.cc/80?img=5" class="w-20 h-20 rounded-full mx-auto mb-3 border-4 border-gray-400" alt="">
+                    <h4 class="font-bold text-gray-900">Sarah Williams</h4>
+                    <p class="text-3xl font-bold text-gray-600 my-2">$10,000</p>
+                    <p class="text-sm text-gray-600">"Every child deserves a chance to learn and grow."</p>
+                </div>
+                <div class="bg-gradient-to-br from-orange-50 to-red-50 rounded-2xl p-6 text-center card-hover border border-orange-200">
+                    <div class="text-4xl mb-3">🥉</div>
+                    <img src="https://i.pravatar.cc/80?img=12" class="w-20 h-20 rounded-full mx-auto mb-3 border-4 border-orange-600" alt="">
+                    <h4 class="font-bold text-gray-900">David Park</h4>
+                    <p class="text-3xl font-bold text-orange-700 my-2">$7,500</p>
+                    <p class="text-sm text-gray-600">"Proud to support this incredible cause."</p>
+                </div>
+            </div>
+
+            <!-- All Donors Grid -->
+            <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4">
+                <div class="text-center p-4 bg-gray-50 rounded-xl card-hover">
+                    <img src="https://i.pravatar.cc/48?img=15" class="w-12 h-12 rounded-full mx-auto mb-2" alt="">
+                    <p class="text-sm font-semibold text-gray-900">Lisa T.</p>
+                    <p class="text-xs text-purple-600 font-bold">$5,000</p>
+                </div>
+                <div class="text-center p-4 bg-gray-50 rounded-xl card-hover">
+                    <img src="https://i.pravatar.cc/48?img=20" class="w-12 h-12 rounded-full mx-auto mb-2" alt="">
+                    <p class="text-sm font-semibold text-gray-900">Robert J.</p>
+                    <p class="text-xs text-purple-600 font-bold">$3,500</p>
+                </div>
+                <div class="text-center p-4 bg-gray-50 rounded-xl card-hover">
+                    <img src="https://i.pravatar.cc/48?img=25" class="w-12 h-12 rounded-full mx-auto mb-2" alt="">
+                    <p class="text-sm font-semibold text-gray-900">Amanda S.</p>
+                    <p class="text-xs text-purple-600 font-bold">$2,500</p>
+                </div>
+                <div class="text-center p-4 bg-gray-50 rounded-xl card-hover">
+                    <img src="https://i.pravatar.cc/48?img=30" class="w-12 h-12 rounded-full mx-auto mb-2" alt="">
+                    <p class="text-sm font-semibold text-gray-900">Chris M.</p>
+                    <p class="text-xs text-purple-600 font-bold">$2,000</p>
+                </div>
+                <div class="text-center p-4 bg-gray-50 rounded-xl card-hover">
+                    <img src="https://i.pravatar.cc/48?img=35" class="w-12 h-12 rounded-full mx-auto mb-2" alt="">
+                    <p class="text-sm font-semibold text-gray-900">Diana K.</p>
+                    <p class="text-xs text-purple-600 font-bold">$1,500</p>
+                </div>
+                <div class="text-center p-4 bg-gray-50 rounded-xl card-hover">
+                    <img src="https://i.pravatar.cc/48?img=40" class="w-12 h-12 rounded-full mx-auto mb-2" alt="">
+                    <p class="text-sm font-semibold text-gray-900">Tom W.</p>
+                    <p class="text-xs text-purple-600 font-bold">$1,000</p>
+                </div>
+                <div class="text-center p-4 bg-gray-50 rounded-xl card-hover">
+                    <img src="https://i.pravatar.cc/48?img=45" class="w-12 h-12 rounded-full mx-auto mb-2" alt="">
+                    <p class="text-sm font-semibold text-gray-900">Nina P.</p>
+                    <p class="text-xs text-purple-600 font-bold">$750</p>
+                </div>
+                <div class="text-center p-4 bg-gray-50 rounded-xl card-hover">
+                    <img src="https://i.pravatar.cc/48?img=48" class="w-12 h-12 rounded-full mx-auto mb-2" alt="">
+                    <p class="text-sm font-semibold text-gray-900">Alex R.</p>
+                    <p class="text-xs text-purple-600 font-bold">$500</p>
+                </div>
+                <div class="text-center p-4 bg-gray-50 rounded-xl card-hover">
+                    <img src="https://i.pravatar.cc/48?img=49" class="w-12 h-12 rounded-full mx-auto mb-2" alt="">
+                    <p class="text-sm font-semibold text-gray-900">Maria G.</p>
+                    <p class="text-xs text-purple-600 font-bold">$350</p>
+                </div>
+                <div class="text-center p-4 bg-gray-50 rounded-xl card-hover">
+                    <img src="https://i.pravatar.cc/48?img=50" class="w-12 h-12 rounded-full mx-auto mb-2" alt="">
+                    <p class="text-sm font-semibold text-gray-900">Jake B.</p>
+                    <p class="text-xs text-purple-600 font-bold">$250</p>
+                </div>
+                <div class="text-center p-4 bg-gray-50 rounded-xl card-hover">
+                    <img src="https://i.pravatar.cc/48?img=51" class="w-12 h-12 rounded-full mx-auto mb-2" alt="">
+                    <p class="text-sm font-semibold text-gray-900">Sophie L.</p>
+                    <p class="text-xs text-purple-600 font-bold">$150</p>
+                </div>
+                <div class="text-center p-4 bg-gray-50 rounded-xl card-hover">
+                    <div class="w-12 h-12 rounded-full mx-auto mb-2 bg-purple-100 flex items-center justify-center">
+                        <i class="fas fa-plus text-purple-600"></i>
+                    </div>
+                    <p class="text-sm font-semibold text-gray-900">2,835 more</p>
+                    <p class="text-xs text-gray-500">donors</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="faq" class="py-20 bg-gray-50">
+        <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <span class="inline-block px-4 py-1.5 rounded-full bg-purple-100 text-purple-700 text-sm font-semibold mb-4">
+                    <i class="fas fa-question-circle mr-1"></i> FAQ
+                </span>
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Frequently Asked Questions</h2>
+                <p class="text-gray-600">Everything you need to know about donating</p>
+            </div>
+
+            <div class="space-y-4">
+                <div class="faq-item bg-white rounded-2xl shadow-sm overflow-hidden">
+                    <button onclick="toggleFaq(this)" class="w-full px-6 py-5 text-left flex items-center justify-between hover:bg-gray-50 transition-colors">
+                        <span class="font-semibold text-gray-900">Is my donation tax-deductible?</span>
+                        <i class="fas fa-chevron-down text-gray-400 transition-transform duration-300"></i>
+                    </button>
+                    <div class="faq-answer hidden px-6 pb-5">
+                        <p class="text-gray-600">Yes! HopeRise is a registered 501(c)(3) nonprofit organization. All donations are tax-deductible to the extent allowed by law. You'll receive a receipt via email for your records.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item bg-white rounded-2xl shadow-sm overflow-hidden">
+                    <button onclick="toggleFaq(this)" class="w-full px-6 py-5 text-left flex items-center justify-between hover:bg-gray-50 transition-colors">
+                        <span class="font-semibold text-gray-900">How is my donation used?</span>
+                        <i class="fas fa-chevron-down text-gray-400 transition-transform duration-300"></i>
+                    </button>
+                    <div class="faq-answer hidden px-6 pb-5">
+                        <p class="text-gray-600">90% of every donation goes directly to our programs - building schools, providing supplies, and supporting teachers. The remaining 10% covers essential administrative costs and fundraising efforts to sustain our mission.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item bg-white rounded-2xl shadow-sm overflow-hidden">
+                    <button onclick="toggleFaq(this)" class="w-full px-6 py-5 text-left flex items-center justify-between hover:bg-gray-50 transition-colors">
+                        <span class="font-semibold text-gray-900">Can I donate from outside the US?</span>
+                        <i class="fas fa-chevron-down text-gray-400 transition-transform duration-300"></i>
+                    </button>
+                    <div class="faq-answer hidden px-6 pb-5">
+                        <p class="text-gray-600">Absolutely! We accept donations from anywhere in the world. Our payment processors support multiple currencies and international credit/debit cards. PayPal also facilitates international transfers.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item bg-white rounded-2xl shadow-sm overflow-hidden">
+                    <button onclick="toggleFaq(this)" class="w-full px-6 py-5 text-left flex items-center justify-between hover:bg-gray-50 transition-colors">
+                        <span class="font-semibold text-gray-900">What payment methods do you accept?</span>
+                        <i class="fas fa-chevron-down text-gray-400 transition-transform duration-300"></i>
+                    </button>
+                    <div class="faq-answer hidden px-6 pb-5">
+                        <p class="text-gray-600">We accept all major credit and debit cards (Visa, Mastercard, American Express, Discover) through Stripe, as well as PayPal and direct bank transfers. All transactions are secured with 256-bit SSL encryption.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item bg-white rounded-2xl shadow-sm overflow-hidden">
+                    <button onclick="toggleFaq(this)" class="w-full px-6 py-5 text-left flex items-center justify-between hover:bg-gray-50 transition-colors">
+                        <span class="font-semibold text-gray-900">Can I set up a recurring donation?</span>
+                        <i class="fas fa-chevron-down text-gray-400 transition-transform duration-300"></i>
+                    </button>
+                    <div class="faq-answer hidden px-6 pb-5">
+                        <p class="text-gray-600">Yes! During the payment process, you'll have the option to make your donation recurring (monthly, quarterly, or annually). Recurring donors receive special recognition and exclusive updates about the project.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item bg-white rounded-2xl shadow-sm overflow-hidden">
+                    <button onclick="toggleFaq(this)" class="w-full px-6 py-5 text-left flex items-center justify-between hover:bg-gray-50 transition-colors">
+                        <span class="font-semibold text-gray-900">What happens if the campaign doesn't reach its goal?</span>
+                        <i class="fas fa-chevron-down text-gray-400 transition-transform duration-300"></i>
+                    </button>
+                    <div class="faq-answer hidden px-6 pb-5">
+                        <p class="text-gray-600">Unlike some platforms, we use a flexible funding model. All donations received will be used for our education programs regardless of whether we reach our full goal. We'll adjust our plans to maximize impact with available funds.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-20 gradient-bg relative overflow-hidden">
+        <div class="absolute inset-0">
+            <div class="particle w-4 h-4 bg-white/10 top-10 left-1/4" style="animation-delay: 0s;"></div>
+            <div class="particle w-3 h-3 bg-white/10 top-20 right-1/3" style="animation-delay: 2s;"></div>
+            <div class="particle w-5 h-5 bg-white/10 bottom-10 left-1/2" style="animation-delay: 4s;"></div>
+        </div>
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+            <div class="text-6xl mb-6 heart-beat">❤️</div>
+            <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">Every Child Deserves a Chance</h2>
+            <p class="text-white/80 text-lg mb-8 max-w-2xl mx-auto">
+                Your donation today can transform a child's tomorrow. Join thousands of generous donors who are making education accessible for all.
+            </p>
+            <button onclick="scrollToDonate()" class="px-10 py-4 rounded-full bg-white text-purple-700 font-bold text-lg hover:bg-gray-100 transition-colors shadow-xl">
+                <i class="fas fa-heart mr-2"></i> Donate Now
+            </button>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-4 gap-8 mb-12">
+                <div>
+                    <div class="flex items-center space-x-2 mb-4">
+                        <div class="w-10 h-10 rounded-xl gradient-bg flex items-center justify-center">
+                            <i class="fas fa-heart text-white"></i>
+                        </div>
+                        <span class="text-xl font-bold">HopeRise</span>
+                    </div>
+                    <p class="text-gray-400 text-sm mb-4">Making education accessible for children worldwide. Together, we can build a brighter future.</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-white/20 transition-colors">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-white/20 transition-colors">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-white/20 transition-colors">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-white/20 transition-colors">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-4">Quick Links</h4>
+                    <ul class="space-y-2 text-gray-400 text-sm">
+                        <li><a href="#campaign" class="hover:text-white transition-colors">Our Campaign</a></li>
+                        <li><a href="#donate" class="hover:text-white transition-colors">Donate</a></li>
+                        <li><a href="#updates" class="hover:text-white transition-colors">Updates</a></li>
+                        <li><a href="#donors" class="hover:text-white transition-colors">Our Donors</a></li>
+                        <li><a href="#faq" class="hover:text-white transition-colors">FAQ</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-4">Organization</h4>
+                    <ul class="space-y-2 text-gray-400 text-sm">
+                        <li><a href="#" class="hover:text-white transition-colors">About Us</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Our Team</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Annual Reports</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Partners</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Careers</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-4">Contact</h4>
+                    <ul class="space-y-3 text-gray-400 text-sm">
+                        <li class="flex items-center gap-2">
+                            <i class="fas fa-envelope w-4"></i>
+                            <span>hello@hoperise.org</span>
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <i class="fas fa-phone w-4"></i>
+                            <span>+1 (555) 123-4567</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <i class="fas fa-map-marker-alt w-4 mt-1"></i>
+                            <span>123 Hope Street<br>New York, NY 10001</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 pt-8 flex flex-col md:flex-row items-center justify-between gap-4">
+                <p class="text-gray-400 text-sm">© 2024 HopeRise Foundation. All rights reserved. 501(c)(3) Nonprofit.</p>
+                <div class="flex items-center gap-6 text-sm text-gray-400">
+                    <a href="#" class="hover:text-white transition-colors">Privacy Policy</a>
+                    <a href="#" class="hover:text-white transition-colors">Terms of Service</a>
+                    <a href="#" class="hover:text-white transition-colors">Donor Policy</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Payment Modal -->
+    <div id="paymentModal" class="fixed inset-0 z-50 hidden">
+        <div class="modal-overlay absolute inset-0 bg-black/60" onclick="closeModal()"></div>
+        <div class="relative min-h-screen flex items-center justify-center p-4">
+            <div class="bg-white rounded-3xl shadow-2xl max-w-md w-full max-h-[90vh] overflow-y-auto slide-up">
+                <!-- Modal Header -->
+                <div class="p-6 border-b border-gray-100">
+                    <div class="flex items-center justify-between">
+                        <h3 class="text-xl font-bold text-gray-900">Complete Your Donation</h3>
+                        <button onclick="closeModal()" class="w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center hover:bg-gray-200 transition-colors">
+                            <i class="fas fa-times text-gray-500"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Modal Content -->
+                <div id="modalContent" class="p-6">
+                    <!-- Payment Form -->
+                    <div id="paymentForm">
+                        <div class="text-center mb-6">
+                            <p class="text-gray-600">Donation Amount</p>
+                            <p class="text-4xl font-bold gradient-text" id="modalAmount">$250</p>
+                        </div>
+
+                        <!-- Payment Method Tabs -->
+                        <div class="flex gap-2 mb-6">
+                            <button onclick="switchPaymentTab('card')" id="cardTab" class="flex-1 py-3 rounded-xl bg-purple-100 text-purple-700 font-semibold text-sm">
+                                <i class="fas fa-credit-card mr-1"></i> Card
+                            </button>
+                            <button onclick="switchPaymentTab('paypal')" id="paypalTab" class="flex-1 py-3 rounded-xl bg-gray-100 text-gray-600 font-semibold text-sm">
+                                <i class="fab fa-paypal mr-1"></i> PayPal
+                            </button>
+                        </div>
+
+                        <!-- Card Form -->
+                        <div id="cardForm">
+                            <div class="space-y-4">
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700 mb-1">Card Number</label>
+                                    <div class="relative">
+                                        <input type="text" placeholder="1234 5678 9012 3456" maxlength="19"
+                                               class="w-full px-4 py-3 border border-gray-200 rounded-xl focus:border-purple-500 focus:outline-none"
+                                               oninput="formatCardNumber(this)">
+                                        <div class="absolute right-3 top-1/2 transform -translate-y-1/2 flex gap-1">
+                                            <i class="fab fa-cc-visa text-blue-600 text-xl"></i>
+                                            <i class="fab fa-cc-mastercard text-red-500 text-xl"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="grid grid-cols-2 gap-4">
+                                    <div>
+                                        <label class="block text-sm font-medium text-gray-700 mb-1">Expiry</label>
+                                        <input type="text" placeholder="MM/YY" maxlength="5"
+                                               class="w-full px-4 py-3 border border-gray-200 rounded-xl focus:border-purple-500 focus:outline-none"
+                                               oninput="formatExpiry(this)">
+                                    </div>
+                                    <div>
+                                        <label class="block text-sm font-medium text-gray-700 mb-1">CVC</label>
+                                        <input type="text" placeholder="123" maxlength="4"
+                                               class="w-full px-4 py-3 border border-gray-200 rounded-xl focus:border-purple-500 focus:outline-none">
+                                    </div>
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700 mb-1">Cardholder Name</label>
+                                    <input type="text" placeholder="John Doe"
+                                           class="w-full px-4 py-3 border border-gray-200 rounded-xl focus:border-purple-500 focus:outline-none">
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- PayPal Form -->
+                        <div id="paypalForm" class="hidden">
+                            <div class="text-center py-8">
+                                <i class="fab fa-paypal text-6xl text-blue-600 mb-4"></i>
+                                <p class="text-gray-600 mb-4">You'll be redirected to PayPal to complete your donation securely.</p>
+                                <div class="bg-blue-50 rounded-xl p-4">
+                                    <p class="text-sm text-blue-700">
+                                        <i class="fas fa-info-circle mr-1"></i>
+                                        PayPal accepts credit cards, debit cards, and PayPal balance.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Recurring Option -->
+                        <div class="mt-6 p-4 bg-purple-50 rounded-xl">
+                            <label class="flex items-center gap-3 cursor-pointer">
+                                <input type="checkbox" id="recurring" class="w-5 h-5 rounded text-purple-600">
+                                <div>
+                                    <p class="font-semibold text-gray-900">Make this monthly</p>
+                                    <p class="text-sm text-gray-600">Help sustain our programs with a recurring donation</p>
+                                </div>
+                            </label>
+                        </div>
+
+                        <!-- Submit Button -->
+                        <button onclick="submitPayment()" id="submitBtn" class="w-full mt-6 py-4 rounded-xl gradient-bg text-white font-bold text-lg hover:opacity-90 transition-opacity">
+                            <i class="fas fa-lock mr-2"></i> Donate <span id="submitAmount">$250</span>
+                        </button>
+
+                        <div class="flex items-center justify-center gap-2 mt-4 text-xs text-gray-500">
+                            <i class="fas fa-shield-alt"></i>
+                            <span>Secured by 256-bit SSL encryption</span>
+                        </div>
+                    </div>
+
+                    <!-- Success State -->
+                    <div id="successState" class="hidden text-center py-8">
+                        <div class="w-20 h-20 rounded-full bg-green-100 flex items-center justify-center mx-auto mb-6">
+                            <i class="fas fa-check text-4xl text-green-500"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-gray-900 mb-2">Thank You! 🎉</h3>
+                        <p class="text-gray-600 mb-6">Your generous donation of <span class="font-bold text-purple-600" id="successAmount">$250</span> has been received.</p>
+                        <div class="bg-gray-50 rounded-xl p-4 mb-6">
+                            <p class="text-sm text-gray-600">A confirmation email has been sent to your email address. Your donation is tax-deductible.</p>
+                        </div>
+                        <div class="flex gap-3">
+                            <button onclick="shareSuccess()" class="flex-1 py-3 rounded-xl bg-purple-100 text-purple-700 font-semibold hover:bg-purple-200 transition-colors">
+                                <i class="fas fa-share mr-1"></i> Share
+                            </button>
+                            <button onclick="closeModal()" class="flex-1 py-3 rounded-xl gradient-bg text-white font-semibold hover:opacity-90 transition-opacity">
+                                Done
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="fixed bottom-4 right-4 z-50 hidden">
+        <div class="bg-gray-900 text-white px-6 py-4 rounded-xl shadow-2xl flex items-center gap-3 slide-up">
+            <i class="fas fa-check-circle text-green-400"></i>
+            <span id="toastMessage">Link copied to clipboard!</span>
+        </div>
+    </div>
+
+    <script>
+        // State
+        let selectedAmount = 250;
+        let currentPaymentMethod = 'card';
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            // Animate progress bar
+            setTimeout(() => {
+                document.getElementById('progressBar').style.width = '75%';
+            }, 500);
+
+            // Navbar scroll effect
+            window.addEventListener('scroll', function() {
+                const navbar = document.getElementById('navbar');
+                if (window.scrollY > 50) {
+                    navbar.classList.add('bg-gray-900/95', 'backdrop-blur-lg', 'shadow-lg');
+                } else {
+                    navbar.classList.remove('bg-gray-900/95', 'backdrop-blur-lg', 'shadow-lg');
+                }
+            });
+
+            // Intersection Observer for animations
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('fade-in');
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            document.querySelectorAll('.card-hover').forEach(el => observer.observe(el));
+        });
+
+        // Mobile menu toggle
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobileMenu');
+            const icon = document.getElementById('menuIcon');
+            menu.classList.toggle('hidden');
+            icon.classList.toggle('fa-bars');
+            icon.classList.toggle('fa-times');
+        }
+
+        // Select donation amount
+        function selectAmount(amount, element) {
+            selectedAmount = amount;
+            
+            // Update UI
+            document.querySelectorAll('.amount-btn').forEach(btn => {
+                btn.classList.remove('selected');
+            });
+            element.classList.add('selected');
+            
+            // Clear custom amount
+            document.getElementById('customAmount').value = '';
+            
+            // Update displays
+            updateAmountDisplays();
+            updateImpactSummary(amount);
+        }
+
+        // Custom amount
+        function updateCustomAmount(value) {
+            if (value && parseInt(value) > 0) {
+                selectedAmount = parseInt(value);
+                document.querySelectorAll('.amount-btn').forEach(btn => {
+                    btn.classList.remove('selected');
+                });
+                updateAmountDisplays();
+                updateImpactSummary(selectedAmount);
+            }
+        }
+
+        // Update all amount displays
+        function updateAmountDisplays() {
+            const formatted = '$' + selectedAmount.toLocaleString();
+            document.getElementById('selectedAmountDisplay').textContent = formatted;
+            document.getElementById('modalAmount').textContent = formatted;
+            document.getElementById('submitAmount').textContent = formatted;
+            document.getElementById('successAmount').textContent = formatted;
+        }
+
+        // Update impact summary
+        function updateImpactSummary(amount) {
+            const impactDiv = document.getElementById('impactSummary');
+            let impacts = [];
+
+            if (amount >= 25) impacts.push({ emoji: '📚', title: 'School Supplies', desc: `For ${Math.floor(amount / 25)} children` });
+            if (amount >= 50) impacts.push({ emoji: '🎒', title: 'Backpacks', desc: `${Math.floor(amount / 50)} complete backpacks` });
+            if (amount >= 100) impacts.push({ emoji: '🏫', title: 'Education Sponsor', desc: `${Math.floor(amount / 100)} month(s) of education` });
+            if (amount >= 250) impacts.push({ emoji: '🪑', title: 'Classroom Furniture', desc: `${Math.floor(amount / 250)} desk & chair set(s)` });
+            if (amount >= 500) impacts.push({ emoji: '🏗️', title: 'Construction Fund', desc: `Contributing to school building` });
+
+            if (impacts.length === 0) {
+                impacts.push({ emoji: '💝', title: 'Every Dollar Counts', desc: 'Your contribution matters!' });
+            }
+
+            impactDiv.innerHTML = impacts.slice(0, 3).map(impact => `
+                <div class="flex items-center gap-3 p-3 bg-white/10 rounded-xl">
+                    <span class="text-2xl">${impact.emoji}</span>
+                    <div>
+                        <p class="font-semibold">${impact.title}</p>
+                        <p class="text-sm opacity-80">${impact.desc}</p>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // Process payment
+        function processPayment(method) {
+            currentPaymentMethod = method;
+            document.getElementById('paymentModal').classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+            
+            if (method === 'stripe' || method === 'card') {
+                switchPaymentTab('card');
+            } else if (method === 'paypal') {
+                switchPaymentTab('paypal');
+            }
+            
+            updateAmountDisplays();
+        }
+
+        // Switch payment tab
+        function switchPaymentTab(tab) {
+            currentPaymentMethod = tab;
+            const cardTab = document.getElementById('cardTab');
+            const paypalTab = document.getElementById('paypalTab');
+            const cardForm = document.getElementById('cardForm');
+            const paypalForm = document.getElementById('paypalForm');
+
+            if (tab === 'card') {
+                cardTab.classList.remove('bg-gray-100', 'text-gray-600');
+                cardTab.classList.add('bg-purple-100', 'text-purple-700');
+                paypalTab.classList.remove('bg-purple-100', 'text-purple-700');
+                paypalTab.classList.add('bg-gray-100', 'text-gray-600');
+                cardForm.classList.remove('hidden');
+                paypalForm.classList.add('hidden');
+            } else {
+                paypalTab.classList.remove('bg-gray-100', 'text-gray-600');
+                paypalTab.classList.add('bg-purple-100', 'text-purple-700');
+                cardTab.classList.remove('bg-purple-100', 'text-purple-700');
+                cardTab.classList.add('bg-gray-100', 'text-gray-600');
+                paypalForm.classList.remove('hidden');
+                cardForm.classList.add('hidden');
+            }
+        }
+
+        // Submit payment
+        function submitPayment() {
+            const btn = document.getElementById('submitBtn');
+            btn.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i> Processing...';
+            btn.disabled = true;
+
+            // Simulate payment processing
+            setTimeout(() => {
+                document.getElementById('paymentForm').classList.add('hidden');
+                document.getElementById('successState').classList.remove('hidden');
+                btn.innerHTML = '<i class="fas fa-lock mr-2"></i> Donate $' + selectedAmount;
+                btn.disabled = false;
+                
+                // Trigger confetti
+                createConfetti();
+            }, 2000);
+        }
+
+        // Close modal
+        function closeModal() {
+            document.getElementById('paymentModal').classList.add('hidden');
+            document.body.style.overflow = 'auto';
+            
+            // Reset modal state
+            setTimeout(() => {
+                document.getElementById('paymentForm').classList.remove('hidden');
+                document.getElementById('successState').classList.add('hidden');
+            }, 300);
+        }
+
+        // Format card number
+        function formatCardNumber(input) {
+            let value = input.value.replace(/\s/g, '').replace(/\D/g, '');
+            let formatted = value.match(/.{1,4}/g)?.join(' ') || value;
+            input.value = formatted;
+        }
+
+        // Format expiry
+        function formatExpiry(input) {
+            let value = input.value.replace(/\D/g, '');
+            if (value.length >= 2) {
+                value = value.substring(0, 2) + '/' + value.substring(2);
+            }
+            input.value = value;
+        }
+
+        // Toggle FAQ
+        function toggleFaq(button) {
+            const answer = button.nextElementSibling;
+            const icon = button.querySelector('i');
+            
+            answer.classList.toggle('hidden');
+            icon.style.transform = answer.classList.contains('hidden') ? 'rotate(0deg)' : 'rotate(180deg)';
+        }
+
+        // Scroll to donate
+        function scrollToDonate() {
+            document.getElementById('donate').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // Copy link
+        function copyLink() {
+            navigator.clipboard.writeText(window.location.href);
+            showToast('Link copied to clipboard!');
+        }
+
+        // Share success
+        function shareSuccess() {
+            if (navigator.share) {
+                navigator.share({
+                    title: 'I just donated to HopeRise!',
+                    text: 'Join me in supporting education for children worldwide.',
+                    url: window.location.href
+                });
+            } else {
+                copyLink();
+            }
+        }
+
+        // Show toast
+        function showToast(message) {
+            const toast = document.getElementById('toast');
+            document.getElementById('toastMessage').textContent = message;
+            toast.classList.remove('hidden');
+            setTimeout(() => {
+                toast.classList.add('hidden');
+            }, 3000);
+        }
+
+        // Create confetti
+        function createConfetti() {
+            const colors = ['#667eea', '#764ba2', '#f472b6', '#fb923c', '#34d399', '#60a5fa'];
+            
+            for (let i = 0; i < 50; i++) {
+                const confetti = document.createElement('div');
+                confetti.className = 'confetti';
+                confetti.style.left = Math.random() * 100 + 'vw';
+                confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                confetti.style.animationDuration = (Math.random() * 2 + 2) + 's';
+                confetti.style.animationDelay = Math.random() * 0.5 + 's';
+                confetti.style.width = (Math.random() * 10 + 5) + 'px';
+                confetti.style.height = (Math.random() * 10 + 5) + 'px';
+                confetti.style.borderRadius = Math.random() > 0.5 ? '50%' : '0';
+                document.body.appendChild(confetti);
+                
+                setTimeout(() => confetti.remove(), 4000);
+            }
+        }
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                    // Close mobile menu if open
+                    document.getElementById('mobileMenu').classList.add('hidden');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
